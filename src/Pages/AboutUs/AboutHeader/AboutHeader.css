@@ -1,0 +1,9 @@
+.line::after{
+    content: "";
+    height: 2px;
+    width: 18vw;
+    background: black;
+    display: inline-block;
+    margin-left: 2%;
+    transform: translateY(-5px);
+    }

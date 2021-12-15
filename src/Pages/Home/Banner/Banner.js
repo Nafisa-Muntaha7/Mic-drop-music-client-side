@@ -1,6 +1,5 @@
 import React from 'react';
 import guitar from '../../../images/girl.with.guitar .jpg';
-import './Banner.css'
 
 const Banner = () => {
     return (

@@ -22,7 +22,6 @@ const MusicSchool = () => {
             </div>
             <Grid sx={{ p: '5%' }} container spacing={2}>
                 <Grid item xs={12} md={7} sm={12}>
-
                     <img style={{ borderRadius: '50%', margin: '15px' }} src={review} alt="" />
                     <Typography variant='h5' style={{ fontStyle: 'italic', margin: '10px', fontSize: '30px' }} gutterBottom component="div">"Mic Drop music school is a MUST for anyone interested in bettering their music skills."</Typography>
                     <Typography sx={{ fontWeight: 'bold', color: '#FA5858', marginTop: '3%' }} variant='p' gutterBottom component="div">Jessica Chan</Typography>
@@ -33,7 +32,7 @@ const MusicSchool = () => {
                     <Typography variant='h3' sx={{ fontWeight: 'bold', color: '' }} gutterBottom component="div">MUSIC SCHOOL</Typography>
                     <Typography style={{ fontWeight: '600', color: '#263238', fontSize: '18px', marginTop: '8%' }} variant="h6" gutterBottom>Normcore proident sed selvage. Post-ironic ugh master cleanse etsy you probably haven't heard of them mustache mollit readymade kombucha pug minim veniam override the digital divide.</Typography>
                     <NavLink to="/" style={{ textDecoration: 'none' }}>
-                        <Button className='button' sx={{ m: '3%', px: '25px', py: '8px', borderRadius: 10, backgroundColor: '#FA5858', color: 'black' }} variant="outlined">Apply Now</Button>
+                        <Button sx={{ m: '3%', px: '25px', py: '8px', borderRadius: 10, backgroundColor: '#FA5858', color: 'black' }} variant="outlined">Apply Now</Button>
                     </NavLink>
                 </Grid>
             </Grid>

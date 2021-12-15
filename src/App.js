@@ -9,8 +9,7 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AboutUs from './Pages/AboutUs/AboutUs/AboutUs';
-import Blogs from './Pages/Blogs/Blogs/Blogs';
-
+import Courses from './Pages/Courses/Courses/Courses';
 
 function App() {
   return (
@@ -27,8 +26,8 @@ function App() {
             <Route path="/about-us">
               <AboutUs />
             </Route>
-            <Route path="/blogs">
-              <Blogs />
+            <Route path="/courses">
+              <Courses />
             </Route>
             <Route path="/login">
               <Login />

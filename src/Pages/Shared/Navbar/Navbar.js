@@ -14,7 +14,7 @@ const Navbar = () => {
     const { user, logout } = useAuth();
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ background: '#595757', color: 'white' }} color="transparent" position="static">
+            <AppBar style={{ background: '#898c88', color: 'black' }} color="transparent" position="static">
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -27,7 +27,15 @@ const Navbar = () => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Mic Drop
                     </Typography>
-
+                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/about-us">
+                        <Button variant='text' color="inherit">About Us</Button>
+                    </NavLink>
+                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/courses">
+                        <Button variant='text' color="inherit">Courses</Button>
+                    </NavLink>
+                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/blogs">
+                        <Button variant='text' color="inherit">Blogs</Button>
+                    </NavLink>
                     {
                         user?.email ?
                             <Button onClick={logout} variant='text' color="inherit">Logout</Button>
