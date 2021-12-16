@@ -11,7 +11,6 @@ const Bg = {
 const MusicSchool = () => {
     return (
         <Box sx={{ flexGrow: 1, backgroundColor: '#e1e9f2', padding: '5%', marginBottom: '5%' }}>
-
             <div>
                 <Typography sx={{ fontWeight: 'bold', paddingTop: '3%', color: '#FE2E2E' }} variant="h5" gutterBottom component="div">
                     HAVE YOU BEEN LOOKING FOR

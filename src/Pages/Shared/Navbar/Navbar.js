@@ -14,7 +14,7 @@ const Navbar = () => {
     const { user, logout } = useAuth();
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ background: '#898c88', color: 'black' }} color="transparent" position="static">
+            <AppBar style={{ background: '#e0dedc', color: 'black' }} color="transparent" position="static">
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -24,24 +24,35 @@ const Navbar = () => {
                         sx={{ mr: 2 }}>
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontWeight: '500' }}>
                         Mic Drop
                     </Typography>
-                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/about-us">
-                        <Button variant='text' color="inherit">About Us</Button>
+                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/home">
+                        <Button variant='text' color="inherit">Home</Button>
                     </NavLink>
-                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/courses">
+                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/about-us">
+                        <Button variant='text' color="inherit">About-Us</Button>
+                    </NavLink>
+                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/courses">
                         <Button variant='text' color="inherit">Courses</Button>
                     </NavLink>
-                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/blogs">
+                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/programs">
+                        <Button variant='text' color="inherit">Programs</Button>
+                    </NavLink>
+                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/blogs">
                         <Button variant='text' color="inherit">Blogs</Button>
                     </NavLink>
                     {
                         user?.email ?
-                            <Button onClick={logout} variant='text' color="inherit">Logout</Button>
+                            <>
+                                <NavLink to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>
+                                    <Button variant='text' color='inherit'>Dashboard</Button>
+                                </NavLink>
+                                <Button onClick={logout} variant='outlined' color="inherit">Logout</Button>
+                            </>
                             :
-                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/login">
-                                <Button variant='text' color="inherit">Login</Button>
+                            <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/login">
+                                <Button variant='outlined' color="inherit">Login</Button>
                             </NavLink>
                     }
 

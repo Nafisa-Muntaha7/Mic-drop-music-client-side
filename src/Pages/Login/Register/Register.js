@@ -1,29 +1,29 @@
-import { Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
-import guitarGirl from '../../../images/guitar.girl.png'
+import { Button, CircularProgress, Container, Grid, TextField, Typography, Alert } from '@mui/material';
+import girlwithmic from '../../../images/girl.with.mic.png';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
+    const { registerUser, user, error, loading } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
 
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData = { ...loginData };
-        console.log(newLoginData);
         newLoginData[field] = value;
         setLoginData(newLoginData);
     };
-
-    const { registerUser, loading } = useAuth();
 
     const handleFormSubmit = e => {
         if (loginData.password !== loginData.password2) {
             alert("Your password didn't match");
             return;
         }
-        registerUser(loginData.email, loginData.password)
+        registerUser(loginData.email, loginData.password, location, history)
         e.preventDefault();
     };
 
@@ -60,16 +60,18 @@ const Register = () => {
                             type="password"
                             name="password2"
                         />
-                        <Button onSubmit={handleFormSubmit} variant='outlined' sx={{ px: 15, m: 1 }}>Register</Button>
+                        <Button onClick={handleFormSubmit} variant='outlined' sx={{ px: 15, m: 1 }}>Register</Button>
                         <br />
                         <NavLink to="/login" style={{ textDecoration: 'none' }}>
                             <Button variant='text'>Already registered? Please Log In.</Button>
                         </NavLink>
                     </form>}
-                    {loading && <CircularProgress />}
+                    {loading && <CircularProgress color="secondary" />}
+                    {user?.email && <Alert severity='success'>Successfully registered!</Alert>}
+                    {error && <Alert severity='error'>{error}</Alert>}
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <img width='100%' src={guitarGirl} alt="" />
+                    <img width='100%' src={girlwithmic} alt="" />
                 </Grid>
             </Grid>
         </Container>

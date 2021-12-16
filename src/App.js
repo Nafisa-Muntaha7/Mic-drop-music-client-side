@@ -1,15 +1,15 @@
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AboutUs from './Pages/AboutUs/AboutUs/AboutUs';
 import Courses from './Pages/Courses/Courses/Courses';
+import Blogs from './Pages/Blogs/Blogs/Blogs';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Programs from './Pages/Programs/Programs/Programs'
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -23,12 +23,21 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/about-us">
+            <PrivateRoute path="/about-us">
               <AboutUs />
-            </Route>
-            <Route path="/courses">
+            </PrivateRoute>
+            <PrivateRoute path="/courses">
               <Courses />
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute path="/blogs">
+              <Blogs />
+            </PrivateRoute>
+            <PrivateRoute path="/programs">
+              <Programs />
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
             <Route path="/login">
               <Login />
             </Route>

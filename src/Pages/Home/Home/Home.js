@@ -4,6 +4,7 @@ import Navbar from '../../Shared/Navbar/Navbar';
 import MusicSchool from '../MusicSchool/MusicSchool';
 import Banner from '../Banner/Banner';
 import LessonsBanner from '../LessonsBanner/LessonsBanner';
+import Gallery from '../Gallery/Gallery';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Banner />
             <MusicSchool />
             <LessonsBanner />
+            <Gallery />
             <Footer />
         </>
     );

@@ -22,7 +22,7 @@ const Teachers = () => {
                 </Grid>
 
             </Container>
-            <Box sx={{ flexGrow: 1, mt: 10, mb: 15 }}>
+            <Box sx={{ flexGrow: 1, mt: 15, mb: 15 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={6} md={3}>
                         <img width='75%' src={teacher1} alt="" />

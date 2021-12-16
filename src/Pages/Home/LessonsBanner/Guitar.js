@@ -5,7 +5,7 @@ import React from 'react';
 
 const Guitar = () => {
     return (
-        <Box sx={{ flexGrow: 1, padding: '4%' }}>
+        <Box sx={{ flexGrow: 1, p: '4%', pb: '10%' }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} sm={12}>
                     <img width='100%' src={guitar} alt="" />
