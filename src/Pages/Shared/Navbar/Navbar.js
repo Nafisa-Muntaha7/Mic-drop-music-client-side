@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 const Navbar = () => {
@@ -48,7 +49,8 @@ const Navbar = () => {
                                 <NavLink to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>
                                     <Button variant='text' color='inherit'>Dashboard</Button>
                                 </NavLink>
-                                <Button onClick={logout} variant='outlined' color="inherit">Logout</Button>
+                                <Button onClick={logout} variant='outlined' color="inherit" sx={{ m: 1 }}>Logout</Button> <AccountCircleIcon />
+
                             </>
                             :
                             <NavLink style={{ textDecoration: 'none', color: 'black' }} to="/login">

@@ -3,10 +3,11 @@ import girlwithmic from '../../../images/girl.with.mic.png'
 import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import GoogleIcon from '@mui/icons-material/Google';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { user, loginUser, loading, error } = useAuth();
+    const { user, loginUser, loading, error, signInWithGoogle } = useAuth();
     const location = useLocation();
     const history = useHistory();
 
@@ -21,6 +22,9 @@ const Login = () => {
         loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
     };
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);;
+    }
 
     return (
         <Container sx={{ margin: '3%' }}>
@@ -50,14 +54,15 @@ const Login = () => {
                             name="password"
                         />
                         <Button onClick={handleFormSubmit} variant='outlined' sx={{ px: 15, m: 1 }}>Log In</Button>
-                        <br />
-                        <NavLink to="/register" style={{ textDecoration: 'none' }}>
-                            <Button variant='text'>New User? Please Register.</Button>
-                        </NavLink>
                         {loading && <CircularProgress color="secondary" />}
                         {user?.email && <Alert severity='success'>Successfully logged in!</Alert>}
                         {error && <Alert severity='error'>{error}</Alert>}
                     </form>
+                    <Button onClick={handleGoogleSignIn} variant='text' sx={{ color: 'black', mb: 2 }}><GoogleIcon /> Log In With Google</Button>
+                    <br />
+                    <NavLink to="/register" style={{ textDecoration: 'none' }}>
+                        <Button variant='text'>New User? Please Register.</Button>
+                    </NavLink>
                 </Grid>
             </Grid>
         </Container>

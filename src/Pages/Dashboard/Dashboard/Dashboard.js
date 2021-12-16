@@ -15,12 +15,17 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom';
+import { Button } from '@mui/material';
+import shadyGuitarist from '../../../images/shady.guitarist.jpg';
+import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 200;
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    let { path, url } = useRouteMatch();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -30,6 +35,16 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
+            <NavLink to="/home" style={{ textDecoration: 'none', display: 'block' }}>
+                <Button variant="text" sx={{ color: 'black', mt: 3 }}>Home</Button>
+            </NavLink>
+            <NavLink to={`${url}/purchase`} style={{ textDecoration: 'none', display: 'block' }}>
+                <Button variant="text" sx={{ color: 'black', m: 1 }}>Purchase Payment</Button>
+            </NavLink>
+            <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block' }}>
+                <Button variant="text" sx={{ color: 'black', m: 1 }}>Add Review</Button>
+            </NavLink>
+
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem button key={text}>
@@ -108,6 +123,14 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
+                <Switch>
+                    <Route exact path={path}>
+
+                    </Route>
+                    <Route path={`${path}/makeAdmin`}>
+
+                    </Route>
+                </Switch>
             </Box>
         </Box>
     );

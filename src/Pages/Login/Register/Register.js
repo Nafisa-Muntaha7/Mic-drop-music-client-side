@@ -7,10 +7,9 @@ import useAuth from '../../../hooks/useAuth';
 const Register = () => {
     const [loginData, setLoginData] = useState({});
     const { registerUser, user, error, loading } = useAuth();
-    const location = useLocation();
     const history = useHistory();
 
-    const handleOnChange = e => {
+    const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData = { ...loginData };
@@ -23,7 +22,7 @@ const Register = () => {
             alert("Your password didn't match");
             return;
         }
-        registerUser(loginData.email, loginData.password, location, history)
+        registerUser(loginData.email, loginData.password, loginData.name, history)
         e.preventDefault();
     };
 
@@ -35,8 +34,17 @@ const Register = () => {
                     {!loading && <form onSubmit={handleFormSubmit}>
                         <TextField
                             id="standard-basic"
+                            label="Your Name"
+                            onBlur={handleOnBlur}
+                            sx={{ width: '75%', m: 1 }}
+                            variant="standard"
+                            type="text"
+                            name="name"
+                        />
+                        <TextField
+                            id="standard-basic"
                             label="Your Email"
-                            onChange={handleOnChange}
+                            onBlur={handleOnBlur}
                             sx={{ width: '75%', m: 1 }}
                             variant="standard"
                             type="email"
@@ -45,7 +53,7 @@ const Register = () => {
                         <TextField
                             id="standard-basic"
                             label="Your Password"
-                            onChange={handleOnChange}
+                            onBlur={handleOnBlur}
                             sx={{ width: '75%', m: 1 }}
                             variant="standard"
                             type="password"
@@ -54,7 +62,7 @@ const Register = () => {
                         <TextField
                             id="standard-basic"
                             label="Rewrite Password"
-                            onChange={handleOnChange}
+                            onBlur={handleOnBlur}
                             sx={{ width: '75%', m: 1 }}
                             variant="standard"
                             type="password"
