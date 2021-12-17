@@ -1,14 +1,25 @@
-import { Grid, Typography } from '@mui/material';
-import React from 'react';
+import { Alert, Grid, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth';
 
 const AddReview = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [added, setAdded] = useState(false);
     const { user } = useAuth();
 
-    const onSubmit = () => {
-
+    const onSubmit = (data) => {
+        fetch('http://localhost:7000/addReviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
+        setAdded(true);
+        console.log(data);
     }
 
     return (
@@ -53,6 +64,7 @@ const AddReview = () => {
                     className="btn text-white">
                     Submit</button>
             </form>
+            {added && <Alert severity="success">Review Added</Alert>}
         </Grid>
     );
 };

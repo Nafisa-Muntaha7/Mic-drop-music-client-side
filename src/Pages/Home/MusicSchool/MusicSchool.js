@@ -1,12 +1,8 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import review from '../../../images/review-1.png'
-import outline from '../../../images/green-symbol-outline.png'
 import { NavLink } from 'react-router-dom';
 
-const Bg = {
-    background: `url(${outline})`,
-}
 
 const MusicSchool = () => {
     return (
