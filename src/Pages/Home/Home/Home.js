@@ -5,6 +5,8 @@ import MusicSchool from '../MusicSchool/MusicSchool';
 import Banner from '../Banner/Banner';
 import LessonsBanner from '../LessonsBanner/LessonsBanner';
 import Gallery from '../Gallery/Gallery';
+import Events from '../Events/Events';
+import Reviews from '../Reviews/Reviews';
 
 const Home = () => {
     return (
@@ -14,6 +16,8 @@ const Home = () => {
             <MusicSchool />
             <LessonsBanner />
             <Gallery />
+            <Events />
+            <Reviews />
             <Footer />
         </>
     );

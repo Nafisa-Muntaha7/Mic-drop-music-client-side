@@ -15,7 +15,7 @@ const Service = ({ program }) => {
                     <Typography variant='h4' gutterBottom component='div'>{name}</Typography>
                     <Typography variant='h5' gutterBottom component='div'>Price: {price}</Typography>
                     <Typography variant='p' gutterBottom component='div'>{description}</Typography>
-                    <NavLink style={{ textDecoration: 'none' }} to="/purchase">
+                    <NavLink style={{ textDecoration: 'none' }} to="/dashboard/purchase">
                         <Button sx={{ m: '3%', px: '25px', py: '8px', borderRadius: 10 }} color='secondary' variant='outlined'>Buy Course</Button>
                     </NavLink>
                 </Grid>

@@ -25,6 +25,7 @@ const Navbar = () => {
                         sx={{ mr: 2 }}>
                         <MenuIcon />
                     </IconButton>
+                    {user?.email && <p style={{ fontWeight: 500 }}>Logged in: {user.displayName}</p>}
                     <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontWeight: '500' }}>
                         Mic Drop
                     </Typography>

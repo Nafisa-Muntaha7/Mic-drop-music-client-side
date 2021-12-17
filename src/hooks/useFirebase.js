@@ -9,6 +9,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
@@ -88,8 +89,14 @@ const useFirebase = () => {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
-        })
-    }
+        });
+    };
+
+    useEffect(() => {
+        fetch(`http://localhost:7000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email]);
 
     const logout = () => {
         setLoading(true);
@@ -103,6 +110,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         loading,
         error,
         registerUser,

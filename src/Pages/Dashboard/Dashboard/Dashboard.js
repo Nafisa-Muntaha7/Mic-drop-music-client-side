@@ -6,19 +6,18 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { Button } from '@mui/material';
-import shadyGuitarist from '../../../images/shady.guitarist.jpg';
 import { NavLink } from 'react-router-dom';
+import DashbaordHome from '../DashboardHome/DashbaordHome';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import ManageOrders from '../ManageOrders/ManageOrders';
+import Purchase from '../Purchase/Purchase';
+import AddReview from '../AddReview/AddReview';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 200;
 
@@ -26,6 +25,7 @@ function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
+    const { logout, admin } = useAuth();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -36,26 +36,32 @@ function Dashboard(props) {
             <Toolbar />
             <Divider />
             <NavLink to="/home" style={{ textDecoration: 'none', display: 'block' }}>
-                <Button variant="text" sx={{ color: 'black', mt: 3 }}>Home</Button>
+                <Button variant="text" sx={{ color: 'black', mt: 10 }}>Home</Button>
             </NavLink>
-            <NavLink to={`${url}/purchase`} style={{ textDecoration: 'none', display: 'block' }}>
-                <Button variant="text" sx={{ color: 'black', m: 1 }}>Purchase Payment</Button>
-            </NavLink>
-            <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block' }}>
-                <Button variant="text" sx={{ color: 'black', m: 1 }}>Add Review</Button>
-            </NavLink>
-
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-        </div>
+            {!admin && <Box>
+                <NavLink to="/programs" style={{ textDecoration: 'none', display: 'block' }}>
+                    <Button variant="text" sx={{ color: 'black' }}>Programs</Button>
+                </NavLink>
+                <NavLink to={`${url}`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <Button variant="text" sx={{ color: 'black', m: 1 }}>Dashboard</Button>
+                </NavLink>
+                <NavLink to={`${url}/purchase`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <Button variant="text" sx={{ color: 'black' }}>Purchase Payment</Button>
+                </NavLink>
+                <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block', m: 1 }}>
+                    <Button variant="text" sx={{ color: 'black' }}>Add Review</Button>
+                </NavLink>
+            </Box>}
+            {admin && <Box>
+                <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <Button variant="text" sx={{ color: 'black' }}>Make Admin</Button>
+                </NavLink>
+                <NavLink to={`${url}/manageOrders`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <Button variant="text" sx={{ color: 'black', m: 1 }}>Manage Orders</Button>
+                </NavLink>
+            </Box >}
+            <Button sx={{ m: 1 }} onClick={logout} variant='outlined' color="inherit">Logout</Button>
+        </div >
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -125,10 +131,19 @@ function Dashboard(props) {
                 <Toolbar />
                 <Switch>
                     <Route exact path={path}>
-
+                        <DashbaordHome />
                     </Route>
                     <Route path={`${path}/makeAdmin`}>
-
+                        <MakeAdmin />
+                    </Route>
+                    <Route path={`${path}/manageOrders`}>
+                        <ManageOrders />
+                    </Route>
+                    <Route path={`${path}/purchase`}>
+                        <Purchase />
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <AddReview />
                     </Route>
                 </Switch>
             </Box>
