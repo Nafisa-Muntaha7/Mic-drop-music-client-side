@@ -10,7 +10,6 @@ import Blogs from './Pages/Blogs/Blogs/Blogs';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Programs from './Pages/Programs/Programs/Programs'
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import AddReview from './Pages/Dashboard/AddReview/AddReview';
 
 function App() {
   return (

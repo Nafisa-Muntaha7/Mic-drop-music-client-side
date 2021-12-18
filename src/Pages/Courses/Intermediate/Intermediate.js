@@ -4,7 +4,7 @@ import React from 'react';
 
 const Intermediate = () => {
     return (
-        <Box sx={{ flexGrow: 1, backgroundColor: '#e5d1ed', p: 15 }}>
+        <Box sx={{ flexGrow: 1, p: 15, mt: -65, position: 'relative' }}>
             <Grid container spacing={2}>
                 <Grid sx={{ mt: 15 }} item xs={12} md={6}>
                     <Typography variant='h6' sx={{ color: '#9e06a1', fontSize: 18 }} gutterBottom component="div">LEVEL B</Typography>

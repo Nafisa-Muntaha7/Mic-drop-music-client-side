@@ -38,30 +38,30 @@ function Dashboard(props) {
             <NavLink to="/home" style={{ textDecoration: 'none', display: 'block' }}>
                 <Button variant="text" sx={{ color: 'black', mt: 10 }}>Home</Button>
             </NavLink>
+            <NavLink to="/programs" style={{ textDecoration: 'none', display: 'block' }}>
+                <Button variant="text" sx={{ color: 'black' }}>Programs</Button>
+            </NavLink>
+            <NavLink to={`${url}`} style={{ textDecoration: 'none', display: 'block' }}>
+                <Button variant="text" sx={{ color: 'black', m: 1 }}>Dashboard</Button>
+            </NavLink>
             {!admin && <Box>
-                <NavLink to="/programs" style={{ textDecoration: 'none', display: 'block' }}>
-                    <Button variant="text" sx={{ color: 'black' }}>Programs</Button>
+                <NavLink to={`${url}/manageOrders`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <Button variant="text" sx={{ color: 'black' }}>Orders</Button>
                 </NavLink>
-                <NavLink to={`${url}`} style={{ textDecoration: 'none', display: 'block' }}>
-                    <Button variant="text" sx={{ color: 'black', m: 1 }}>Dashboard</Button>
-                </NavLink>
-                <NavLink to={`${url}/purchase`} style={{ textDecoration: 'none', display: 'block' }}>
+                <NavLink to={`${url}/purchase`} style={{ textDecoration: 'none', display: 'block', m: 1 }}>
                     <Button variant="text" sx={{ color: 'black' }}>Purchase Payment</Button>
                 </NavLink>
-                <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block', m: 1 }}>
+                <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block' }}>
                     <Button variant="text" sx={{ color: 'black' }}>Add Review</Button>
                 </NavLink>
             </Box>}
             {admin && <Box>
-                <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none', display: 'block' }}>
+                <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none', display: 'block', m: 1 }}>
                     <Button variant="text" sx={{ color: 'black' }}>Make Admin</Button>
-                </NavLink>
-                <NavLink to={`${url}/manageOrders`} style={{ textDecoration: 'none', display: 'block' }}>
-                    <Button variant="text" sx={{ color: 'black', m: 1 }}>Manage Orders</Button>
                 </NavLink>
             </Box >}
             <Button sx={{ m: 1 }} onClick={logout} variant='outlined' color="inherit">Logout</Button>
-        </div >
+        </div>
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -139,7 +139,7 @@ function Dashboard(props) {
                     <Route path={`${path}/manageOrders`}>
                         <ManageOrders />
                     </Route>
-                    <Route path={`${path}/purchase`}>
+                    <Route path={`${path}/purchase/:purchaseId`}>
                         <Purchase />
                     </Route>
                     <Route path={`${path}/review`}>
