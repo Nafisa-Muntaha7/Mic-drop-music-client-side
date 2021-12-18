@@ -15,7 +15,7 @@ const ManageOrders = () => {
     const [purchases, setPurchases] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:7000/purchases?email=${user.email}`
+        const url = `https://shielded-fjord-90529.herokuapp.com/purchases?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setPurchases(data));

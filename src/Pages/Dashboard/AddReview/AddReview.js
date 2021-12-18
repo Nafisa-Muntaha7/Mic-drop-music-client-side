@@ -9,7 +9,7 @@ const AddReview = () => {
     const { user } = useAuth();
 
     const onSubmit = (data) => {
-        fetch('http://localhost:7000/addReviews', {
+        fetch('https://shielded-fjord-90529.herokuapp.com/addReviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

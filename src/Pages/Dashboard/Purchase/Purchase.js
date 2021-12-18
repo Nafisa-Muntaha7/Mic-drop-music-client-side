@@ -11,7 +11,7 @@ const Purchase = () => {
     const { purchaseId } = useParams();
     const [purchase, setPurchase] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:7000/purchases/${purchaseId}`)
+        fetch(`https://shielded-fjord-90529.herokuapp.com/purchases/${purchaseId}`)
             .then(res => res.json())
             .then(data => setPurchase(data));
     }, [purchaseId]);

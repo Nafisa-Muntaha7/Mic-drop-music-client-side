@@ -43,7 +43,7 @@ const BuyCourse = ({ open, handleClose, program, setSuccess }) => {
             price,
             programName: name,
         }
-        fetch('http://localhost:7000/purchases', {
+        fetch('https://shielded-fjord-90529.herokuapp.com/purchases', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
