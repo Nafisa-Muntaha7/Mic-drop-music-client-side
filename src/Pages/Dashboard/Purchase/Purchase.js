@@ -1,11 +1,13 @@
 import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import CheckOutForm from './CheckOutForm.js';
 import { loadStripe } from '@stripe/stripe-js';
-import CheckOutForm from './CheckOutForm';
-// import { CardElement, Elements, useElements, useStripe } from '../../../../src';
+import { Elements } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_51JwMjSKz6a7UejI3ibymOgI2LBg5uWYMru2hvH1Jc76RqEh7w3T2csk5K8lm4FADCNvaBd36uF4gfTlP8YdmbNxJ006pUF5C8y');
+
+const stripePromise = loadStripe('pk_test_51KEo6oFMl2DNh5qI9fX2xzp3feDffjxdyMwmDNHLjo5NKnUYS43sbWCCJcxNtM4xH0oMWjG3rppEaxtMufVNlm1N00ON8fWuPi');
+
 
 const Purchase = () => {
     const { purchaseId } = useParams();
@@ -20,9 +22,14 @@ const Purchase = () => {
         <div>
             <Typography sx={{ m: 5 }} variant="h3" gutterBottom component='div'>Pay for <span style={{ color: '#fe0049', fontWeight: 500 }}>{purchase.programName}</span></Typography>
             <Typography variant="h4" gutterBottom component='div'>Pay: {purchase.price}</Typography>
-            {/* <Elements stripe={stripePromise}>
-                <CheckOutForm />
-            </Elements> */}
+
+            <Elements stripe={stripePromise}>
+                <CheckOutForm
+                    purchase={purchase}
+                />
+            </Elements>
+
+
         </div>
     );
 };

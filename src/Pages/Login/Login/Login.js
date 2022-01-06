@@ -23,7 +23,7 @@ const Login = () => {
         e.preventDefault();
     };
     const handleGoogleSignIn = () => {
-        signInWithGoogle(location, history);;
+        signInWithGoogle(location, history);
     }
 
     return (
