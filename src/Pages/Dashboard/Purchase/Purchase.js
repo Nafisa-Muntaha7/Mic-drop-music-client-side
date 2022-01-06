@@ -23,11 +23,11 @@ const Purchase = () => {
             <Typography sx={{ m: 5 }} variant="h3" gutterBottom component='div'>Pay for <span style={{ color: '#fe0049', fontWeight: 500 }}>{purchase.programName}</span></Typography>
             <Typography variant="h4" gutterBottom component='div'>Pay: {purchase.price}</Typography>
 
-            <Elements stripe={stripePromise}>
+            {purchase?.price && <Elements stripe={stripePromise}>
                 <CheckOutForm
                     purchase={purchase}
                 />
-            </Elements>
+            </Elements>}
 
 
         </div>

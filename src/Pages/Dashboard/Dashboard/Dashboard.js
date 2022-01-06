@@ -18,6 +18,7 @@ import ManageOrders from '../ManageOrders/ManageOrders';
 import Purchase from '../Purchase/Purchase';
 import AddReview from '../AddReview/AddReview';
 import useAuth from '../../../hooks/useAuth';
+import PaymentSuccess from '../PaymentSuccess/PaymentSuccess';
 
 const drawerWidth = 200;
 
@@ -48,10 +49,7 @@ function Dashboard(props) {
                 <NavLink to={`${url}/manageOrders`} style={{ textDecoration: 'none', display: 'block' }}>
                     <Button variant="text" sx={{ color: 'black' }}>Orders</Button>
                 </NavLink>
-                <NavLink to={`${url}/purchase`} style={{ textDecoration: 'none', display: 'block', m: 1 }}>
-                    <Button variant="text" sx={{ color: 'black' }}>Purchase Payment</Button>
-                </NavLink>
-                <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block' }}>
+                <NavLink to={`${url}/review`} style={{ textDecoration: 'none', display: 'block', m: 1 }}>
                     <Button variant="text" sx={{ color: 'black' }}>Add Review</Button>
                 </NavLink>
             </Box>}
@@ -141,6 +139,9 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/purchase/:purchaseId`}>
                         <Purchase />
+                    </Route>
+                    <Route path={`${path}/paymentSuccess`}>
+                        <PaymentSuccess />
                     </Route>
                     <Route path={`${path}/review`}>
                         <AddReview />
